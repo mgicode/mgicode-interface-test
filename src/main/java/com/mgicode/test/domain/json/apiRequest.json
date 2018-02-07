@@ -1,0 +1,72 @@
+{
+    "restApi": {
+        "url": "http://{{ip}}:{{port}}/tesd/dsds",
+        "requestWay": "get/post/put/patch",
+        "random": true,
+        "inway": "form-data",
+        "outway": "json"
+    },
+    "asserts": [
+        {
+            "count": "n",
+             "out": [
+                {
+                   "condition":"paramOK",
+                   "name": "data.code",
+                    "relative": "=",
+                    "value": "200"
+                },
+                {
+                   "condition":"paramNotOK",
+                   "name": "data.code",
+                   "relative": "=",
+                   "value": "401"
+                }
+                
+            ]
+        },
+        {
+            "count": "n",
+            "out": [
+                {
+                    "name": "__assertClzName"
+                }
+            ]
+        },
+        {
+            "in": {
+                "laneEnSeriaNo": "212211",
+                "enTime": "322eee"
+            },
+            "out": [
+                {
+                   "condition":"paramOK,paramNotOK,paramNotRequired,paramNotLimit,expr(aa.name!=aa)",
+                   "name": "data.user.name",
+                    "relative": "~=",
+                    "value": "desd"
+                }
+            ],
+            "write": {
+                "name": "user.name",
+                "value": ""
+            }
+        },
+        {
+            "in": {
+                "laneEnSeriaNo": "{{user.name}}",
+                "enTime": "322eee"
+            },
+            "out": [
+                {
+                    "name": "data.user.name",
+                    "relative": "~=",
+                    "value": "desd"
+                }
+            ],
+            "write": {
+                "name": "desdd",
+                "value": ""
+            }
+        }
+    ]
+}

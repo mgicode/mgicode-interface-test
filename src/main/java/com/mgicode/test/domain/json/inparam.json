@@ -1,0 +1,186 @@
+//---interface---
+{
+	"url": "http://{{ip}}:{{port}}/tesd/dsds",
+	"requestWay": "get/post/put/patch",
+	"random": true,
+	"inway": "form-data、text/plain、aplication/json、text/xml",
+	"outway": "json、text"
+}
+
+//---inRule---
+{
+	"required": false,
+	"type": "obj",
+	"unique": true,
+	"dataRule": {
+		"laneEnSeriaNo": {
+			"required": false,
+			"unique": true,
+			"type": "string",
+			"dbType": "text",
+			"desc": "车道编码+出口时间",
+			"createRule": "",
+			"restraint": "正则表达式",//"length": "1...20"//[1...20]
+
+			"limit": "1...20"
+		},
+		"enTime": {
+			"required": false,
+			"type": "date",
+			"dbType": "text",
+			"unique": true,
+			"desc": "En",
+			"createRule": "",
+			"restraint": "正则表达式"
+		},
+		"enTime": {
+			"required": false,
+			"type": "int",
+			"dbType": "text",
+			"unique": true,
+			"desc": "车道编码+出口时间",
+			"createRule": "",
+			"restraint": "正则表达式",
+			"limit": "[1...20]"//最小值和最大值，包括边界值
+
+		},
+		"enTime": {
+			"required": false,
+			"type": "long",
+			"dbType": "text",
+			"unique": true,
+			"desc": "En+站点编码+车道编码+出口时间(年月日时分秒毫 秒)",
+			"createRule": "",//_constom:fnName
+
+			"restraint": "正则表达式",//__email,__integer,__az09,__chinese
+
+			"limit": "1...20"//最小值和最大值，
+
+		},
+		"enTime": {
+			"required": false,
+			"type": "float",
+			"dbType": "text",
+			"unique": true,
+			"desc": "车道编码+出口时间",
+			"createRule": "",
+			"restraint": "正则表达式",
+			"limit": "1...20"//最小值和最大值
+
+		},
+		"users": {
+			"required": false,
+			"type": "list",
+			"unique": true,
+			"dataRule": {
+				
+			}
+		}
+	}
+}		
+
+//---outRule---
+
+
+
+
+
+
+
+//---assert---
+
+{
+"count": "n",	
+}
+
+//---
+{
+"count": "n",	
+"out": [
+			{
+				"name": "__assertClzName",			
+			}
+		],
+}
+//---	
+{		
+		
+		"in": {
+			"laneEnSeriaNo": "212211",
+			"enTime": "322eee"
+		},
+		"out": [
+			{
+				"name": "data.user.name",//__common
+				"relative": "~=",
+				"value": "desd"
+			}
+		],
+		"write": {
+			"name": "user.name",
+			"value": ""
+		}
+	}
+	
+//---	
+    
+	{
+	
+	"in": {
+		"laneEnSeriaNo": "{{user.name}}",
+		"enTime": "322eee"
+	},
+	"out": [
+		{
+			"name": "data.user.name",
+			"relative": "~=",
+			"value": "desd"
+		}
+	],
+	"write": {
+		"name": "desdd",
+		"value": ""
+	}
+}
+
+
+
+
+
+
+//---assert---
+
+
+
+
+
+
+
+//---
+
+
+
+
+//既可以支持单元测试用，也可以支持 jenkins来自动跑
+
+//1、导入入参的规则
+
+//2、修改部分规则
+
+//3、按规则生成的数据(有一部分数据是全局变量来的)
+
+//4、把自己需要取代的数据注入到生成的数据
+
+//5、使用使用断言进行判断
+
+//6、把返回的数据写入到全局变量供下次使用
+
+
+//一次请求包括多个断言, monkey测试
+
+//请求
+
+
+
+
+
