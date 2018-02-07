@@ -8,6 +8,8 @@ import com.mgicode.test.domain.ApiRequest;
 import com.mgicode.test.domain.Asserts;
 import com.mgicode.test.domain.InRule;
 
+
+
 public class RequestGen {
 
 	public List<ApiRequest> gen(ApiConfig apiConfig) {
@@ -35,8 +37,7 @@ public class RequestGen {
 						
 			
 		}
-		
-		
+			
 		
 		return null;
 	}
