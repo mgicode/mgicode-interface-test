@@ -13,6 +13,12 @@ public class InRule {
 	private String restraint;
 	private String limit;
 	
+	//字段名称
+	private String name;
+	//主要为了提到性能，在内部使用的标识
+	private boolean excluded=false;
+	
+	
 	private Map<String, InRule> dataRule;
 	
 	public String getType() {
@@ -71,7 +77,18 @@ public class InRule {
 		this.limit = limit;
 	}
 
-	
+	public boolean isExcluded() {
+		return excluded;
+	}
+	public void setExcluded(boolean excluded) {
+		this.excluded = excluded;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	//---inRule---
 //	{

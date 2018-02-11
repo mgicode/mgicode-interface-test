@@ -10,8 +10,7 @@ public class CommandLiner implements CommandLineRunner {
   public void run(String... args) throws Exception {
 	  System.out.println("this is enter");
     // Put your logic here
-	  for (String arg:args) {
-		  
+	  for (String arg:args) {		  
 		  System.out.println(arg);
 	  }
   }

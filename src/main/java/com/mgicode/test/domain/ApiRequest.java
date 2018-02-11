@@ -6,6 +6,8 @@ public class ApiRequest {
 	
 	private RestApi restApi;
 	private Asserts asserts;
+	
+	private String description;
 			
 	public RestApi getRestApi() {
 		return restApi;
@@ -26,5 +28,12 @@ public class ApiRequest {
 	public void setChineseName(String chineseName) {
 		this.chineseName = chineseName;
 	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	
 }

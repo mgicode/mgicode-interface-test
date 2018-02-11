@@ -8,9 +8,7 @@ public class Asserts {
 	private String count="1"; //"1,2,3,n, <10"
 	private Map<String, ?> in;
 	private List<Map<String, ?>> out;
-	private  List<Map<String, ?>> write;
-		
-	
+	private List<Map<String, ?>> write;		
 
 	public String getCount() {
 		return count;
