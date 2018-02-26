@@ -8,7 +8,11 @@ public class ApiRequest {
 	private Asserts asserts;
 	
 	private String description;
+	
+	//
+	private boolean preSuccess;
 			
+	
 	public RestApi getRestApi() {
 		return restApi;
 	}
@@ -34,6 +38,11 @@ public class ApiRequest {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+	public boolean isPreSuccess() {
+		return preSuccess;
+	}
+	public void setPreSuccess(boolean preSuccess) {
+		this.preSuccess = preSuccess;
+	}
 	
 }

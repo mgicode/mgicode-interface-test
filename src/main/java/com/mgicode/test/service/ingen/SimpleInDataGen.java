@@ -1,6 +1,8 @@
 package com.mgicode.test.service.ingen;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.mgicode.test.domain.ApiConfig;
 import com.mgicode.test.domain.ApiRequest;
@@ -39,19 +41,41 @@ public class SimpleInDataGen implements IInDataGen {
 	public List<ApiRequest> genMax(Asserts as, ApiConfig apiConfig) {
 		// 每个assert
 		// 排除已经指定数据的字段
-		InRuleUtils.loop(apiConfig.getInRule(), (level, name, inrule1) -> {
+		InRuleUtils.loop(apiConfig.getInRule(), (level, name, inrule) -> {
 			for (String key : as.getIn().keySet()) {
 				if (key.equals(name)) {
-					inrule1.setExcluded(true);
+					inrule.setExcluded(true);
 					break;
 				}
 			}
+			return true;
 		});
 
-		//目前只考虑二层（o数据上只有一层）,即采用form-data的方式进行
-		
-		
+		// 目前只考虑二层（o数据上只有一层）,即采用form-data的方式进行
+
+		// "in": {
+		// "laneEnSeriaNo": "{{user.name}}",
+		// "enTime": "322eee"
+		// },
+
+		ApiRequest apiRequest = new ApiRequest();
+		Map<String, ?> inDataMap = new HashMap<>();
+
+		InRuleUtils.loopBreak(apiConfig.getInRule(), (level, name, inrule) -> {
+			// 处理第一层，看看参数是否可以完成为空
+			if (level == 0) {
+				boolean required = inrule.isRequired();
+				//required
 				
+
+			} else if (level == 1) {
+
+			}
+
+			return true;
+
+		});
+
 		return null;
 	}
 

@@ -16,16 +16,47 @@ public class InRuleUtils {
 		if (dotName == null || dotName.trim().isEmpty()) {
 			dotName = "";
 		} else {
-			dotName = name + inrule.getName();
+			dotName = name +"."+ inrule.getName();
 		}
 		icb.exec(level, dotName, inrule);
 		if (inrule.getDataRule() != null && inrule.getDataRule().size() > 0) {
 			for (InRule child : inrule.getDataRule().values()) {
-				icb.exec(level + 1, dotName,child);
+				icb.exec(level + 1, dotName, child);
 			}
 		}
 
 		return inrule;
+	}
+
+	public static boolean loopBreak(InRule inrule, InRuleCallBack icb) {
+
+		return loopBreak(0, "", inrule, icb);
+
+	}
+
+	public static boolean loopBreak(int level, String name, InRule inrule, InRuleCallBack icb) {
+
+		String dotName = name;
+		if (dotName == null || dotName.trim().isEmpty()) {
+			dotName = "";
+		} else {
+			dotName = name + inrule.getName();
+		}
+		boolean flag = icb.exec(level, dotName, inrule);
+		if (flag == false) {
+			return false;
+		}
+		if (inrule.getDataRule() != null && inrule.getDataRule().size() > 0) {
+			for (InRule child : inrule.getDataRule().values()) {
+
+				boolean flag1 = icb.exec(level + 1, dotName, child);
+				if (flag1 == false) {
+					break;
+				}
+			}
+		}
+
+		return true;
 	}
 
 	/**
@@ -37,13 +68,14 @@ public class InRuleUtils {
 
 		loop(inrule, (level, name, inrule1) -> {
 			inrule1.setExcluded(false);
+			return true;
 		});
 
 	}
 
 	public interface InRuleCallBack {
 
-		public void exec(int level, String name, InRule inrule);
+		public boolean exec(int level, String name, InRule inrule);
 	}
 
 }
